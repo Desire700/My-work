@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+     <a href="#main"
+     class="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-[60] focus:rounded-lg focus:bg-yellow-500 focus:px-4 focus:py-2 focus:font-bold">
+    Skip to content
+  </a>
+ 
+  <header class="sticky top-0 z-50 border-b border-neutral-200 bg-white">
+    <nav aria-label="Main" class="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 font-semibold">
+ 
+      <!-- LEFT: brand + dropdowns (desktop only) -->
+      <div class="flex items-center gap-6">
+        <a href="#" class="text-xl font-extrabold tracking-tight hover:text-yellow-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-yellow-500">
+          Stock Media
+        </a>
+ 
+        <ul class="hidden items-center gap-1 lg:flex">
+          <li class="relative">
+            <button type="button" data-dropdown aria-expanded="false" aria-controls="menu-stock"
+                    class="flex items-center gap-1 rounded-lg px-3 py-2 hover:text-yellow-600 focus-visible:outline-2 focus-visible:outline-yellow-500">
+              Stock media
+              <svg class="size-4 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.5 7.5 10 12l4.5-4.5"/></svg>
+            </button>
+            <ul id="menu-stock" hidden
+                class="absolute left-0 top-full mt-2 w-52 rounded-xl border border-neutral-200 bg-white p-2 shadow-xl">
+              <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-yellow-50 hover:text-yellow-700 focus-visible:outline-2 focus-visible:outline-yellow-500">Video</a></li>
+              <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-yellow-50 hover:text-yellow-700 focus-visible:outline-2 focus-visible:outline-yellow-500">Audio</a></li>
+              <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-yellow-50 hover:text-yellow-700 focus-visible:outline-2 focus-visible:outline-yellow-500">Marketing</a></li>
+            </ul>
+          </li>
+ 
+          <li class="relative">
+            <button type="button" data-dropdown aria-expanded="false" aria-controls="menu-tools"
+                    class="flex items-center gap-1 rounded-lg px-3 py-2 hover:text-yellow-600 focus-visible:outline-2 focus-visible:outline-yellow-500">
+              Creative tools
+              <svg class="size-4 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.5 7.5 10 12l4.5-4.5"/></svg>
+            </button>
+            <ul id="menu-tools" hidden
+                class="absolute left-0 top-full mt-2 w-52 rounded-xl border border-neutral-200 bg-white p-2 shadow-xl">
+              <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-yellow-50 hover:text-yellow-700 focus-visible:outline-2 focus-visible:outline-yellow-500">Video templates</a></li>
+              <li><a href="#" class="block rounded-lg px-3 py-2 hover:bg-yellow-50 hover:text-yellow-700 focus-visible:outline-2 focus-visible:outline-yellow-500">Marketing</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+ 
+      <!-- CENTER: search (desktop only; mobile has its own inside the panel) -->
+      <form role="search" action="#" class="hidden max-w-sm flex-1 lg:block">
+        <label for="search-desktop" class="sr-only">Search videos</label>
+        <div class="flex items-center rounded-xl bg-white px-3 py-1.5 shadow-lg shadow-yellow-500/30 ring-1 ring-neutral-200 focus-within:ring-2 focus-within:ring-yellow-500">
+          <svg class="size-4 shrink-0 text-neutral-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+          <input id="search-desktop" type="search" placeholder="Search videos"
+                 class="ml-2 w-full bg-transparent text-sm font-normal outline-none placeholder:text-neutral-500">
+        </div>
+      </form>
+ 
+      <!-- RIGHT: actions (desktop only) -->
+      <div class="hidden items-center gap-2 lg:flex">
+        <a href="#" class="rounded-lg px-3 py-2 hover:text-yellow-600 focus-visible:outline-2 focus-visible:outline-yellow-500">Log in</a>
+        <a href="#" class="rounded-lg px-3 py-2 hover:text-yellow-600 focus-visible:outline-2 focus-visible:outline-yellow-500">Pricing</a>
+        <a href="#" class="rounded-xl bg-yellow-500 px-5 py-2 text-neutral-900 hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">Join now</a>
+      </div>
+ 
+      <!-- Hamburger (below lg) -->
+      <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu"
+              class="rounded-lg p-2 hover:bg-yellow-50 focus-visible:outline-2 focus-visible:outline-yellow-500 lg:hidden">
+        <span class="sr-only">Open menu</span>
+        <svg id="icon-open" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg id="icon-close" class="hidden size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </nav>
+ 
+    <!-- MOBILE / TABLET PANEL -->
+    <div id="mobile-menu" hidden
+         class="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-neutral-200 bg-white px-4 pb-6 pt-4 font-semibold lg:hidden">
+ 
+      <form role="search" action="#">
+        <label for="search-mobile" class="sr-only">Search videos</label>
+        <div class="flex items-center rounded-xl bg-white px-3 py-2 ring-1 ring-neutral-300 focus-within:ring-2 focus-within:ring-yellow-500">
+          <svg class="size-4 shrink-0 text-neutral-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="m14 14 4 4"/></svg>
+          <input id="search-mobile" type="search" placeholder="Search videos"
+                 class="ml-2 w-full bg-transparent font-normal outline-none placeholder:text-neutral-500">
+        </div>
+      </form>
+ 
+      <ul class="mt-4 divide-y divide-neutral-200">
+        <li>
+          <details class="group">
+            <summary class="flex cursor-pointer list-none items-center justify-between py-3 focus-visible:outline-2 focus-visible:outline-yellow-500 [&::-webkit-details-marker]:hidden">
+              Stock media
+              <svg class="size-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.5 7.5 10 12l4.5-4.5"/></svg>
+            </summary>
+            <ul class="pb-3 pl-3 font-normal">
+              <li><a href="#" class="block py-2 hover:text-yellow-700">Video</a></li>
+              <li><a href="#" class="block py-2 hover:text-yellow-700">Audio</a></li>
+              <li><a href="#" class="block py-2 hover:text-yellow-700">Marketing</a></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details class="group">
+            <summary class="flex cursor-pointer list-none items-center justify-between py-3 focus-visible:outline-2 focus-visible:outline-yellow-500 [&::-webkit-details-marker]:hidden">
+              Creative tools
+              <svg class="size-4 transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M5.5 7.5 10 12l4.5-4.5"/></svg>
+            </summary>
+            <ul class="pb-3 pl-3 font-normal">
+              <li><a href="#" class="block py-2 hover:text-yellow-700">Video templates</a></li>
+              <li><a href="#" class="block py-2 hover:text-yellow-700">Marketing</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href="#" class="block py-3 hover:text-yellow-700">Pricing</a></li>
+        <li><a href="#" class="block py-3 hover:text-yellow-700">Log in</a></li>
+      </ul>
+ 
+      <a href="#" class="mt-4 block rounded-xl bg-yellow-500 px-5 py-3 text-center text-neutral-900 hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900">Join now</a>
+    </div>
+  </header>
+
+ 
+    <div class="bg-[url(jake.jpg)]  bg-cover p-20 pl-20">
+        <p class="text-5xl font-semibold mb-5 font-serif">Create a better video,<br>faster than ever</p>
+        <div class="mb-5 text-white text-sm font-serif ">
+            <a href="#">Video</a>
+            <a href="#"><u>Video Template</u></a>
+            <a href="#">Audio</a>
+            <a href="#">Video</a>
+        </div>
+        <div>
+            <input type="search" placeholder="search" class="bg-white rounded-xl p-1 w-100">
+        </div>
+        <div class="py-7 text-white text-sm font-serif font-semibold">
+            Trending: <u>summer,Artificial intellengence,Data</u>
+        </div>
+    </div>
+
+
+
+    <P class="mx-18 mt-5 text-2xl font-bold text-yellow-500  italic ">OUR LOCATIONS</P>
+        <!-- for grid -->
+    <div class="grid lg:grid-cols-4 sm:grid-cols-2">
+    <!-- location 1st -->
+     <div class="m-6 shadow-lg shadow-orange-500/100 p-5 w-70 h-110 rounded-xl">
+        <img src="woman.jpg" alt="" class="w-70 h-50 rounded-xl">
+            <h3 class="text-xl italic">Gateway office(Head Office)</h3>
+            <div class="mt-4 font-bold font-serif text-sm">
+                Wolfe Tone House 
+               <p>Airport Road </p> 
+               <p>Gate,A51 Pw72</p> 
+            </div>
+             
+            <div class="mt-5 italic font-semibold">
+               <a href="" class=""> +234 810-727-1142</a>
+                <p>building@company.com</p>
+            </div>
+     </div>
+
+
+      <!-- location 2nd -->
+      <div class="m-6 shadow-lg shadow-orange-500/100 p-5 w-70 h-110 rounded-xl ">
+              <img src="woman.jpg" alt="" class="w-70 h-50 rounded-xl">
+             <h3 class="text-xl italic">Cork office</h3>
+            <div class="mt-4 font-bold font-serif text-sm">
+                De Antonio House 
+               <p>Prosco Road</p> 
+               <p>cork,163 Henp</p> 
+            </div>
+             
+            <div class="mt-5 italic font-semibold">
+                <a href=""> +234 810-727-1142</a>
+                <p>building@company.com</p>
+            </div>
+     </div>
+
+      <!-- location 3rd -->
+      <div class="m-6 shadow-lg shadow-orange-500/100 p-5 w-70 h-110 rounded-xl ">
+        <img src="woman.jpg" alt="" class="w-70 h-50 rounded-xl">
+            <h3 class="text-xl italic">Genesis office</h3>
+            <div class="mt-4 font-bold font-serif text-sm">
+                santos house 
+               <p>Airoplane Road</p> 
+               <p>Genesis,A51 Pw72</p> 
+            </div>
+             
+            <div class="mt-5 italic font-semibold">
+               <a href=""> +234 810-727-1142</a>
+                <p>building@company.com</p>
+            </div>
+     </div> 
+     
+      <!-- location 4th -->
+     <div class="m-6 shadow-lg shadow-orange-500/100 p-5 w-70 h-110 rounded-xl ">
+        <img src="woman.jpg" alt="" class="w-70 h-50 rounded-xl">
+            <h3 class="text-xl italic">Dulbin office</h3>
+            <div class="mt-4 font-bold font-serif text-sm">
+                36 kiehn route 
+               <p>Newmarket square </p> 
+               <p>Dulbin,k87 Pw89</p> 
+            </div>
+             
+            <div class="mt-5 italic font-semibold">
+               <a href=""> +234 810-727-1142</a>
+                <p>building@company.com</p>
+            </div>
+     </div> 
+     
+      <!-- location 5th -->
+     <div class="m-6 shadow-lg shadow-orange-500/100 p-5 w-70 h-110 rounded-xl ">
+        <img src="woman.jpg" alt="" class="w-70 h-50 rounded-xl">
+            <h3 class="text-xl italic">Puskas office</h3>
+            <div class="mt-4 font-bold font-serif text-sm">
+                Ballon-dior House 
+               <p>Fido Road </p> 
+               <p>Gate,A51 Pw72</p> 
+            </div>
+             
+            <div class="mt-5 italic font-semibold">
+              <a href=""> +234 810-727-1142</a>
+                <p>building@company.com</p>
+            </div>
+     </div> 
+     
+      <!-- location 6th -->
+     <div class="m-6 shadow-lg shadow-orange-500/100 p-5 w-70 h-110 rounded-xl ">
+        <img src="woman.jpg" alt="" class="w-70 h-50 rounded-xl">
+            <h3 class="text-xl italic">WP office</h3>
+            <div class="mt-4 font-bold font-serif text-sm">
+                Capri House 
+               <p>Airport Road </p> 
+               <p>Gate,A51 Pw72</p> 
+            </div>
+             
+            <div class="mt-5 italic font-semibold ">
+               <a href="" > +234 810-727-1142</a>
+                <p>building@company.com</p>
+            </div>
+     </div>
+     </div>
+
+     <!-- footer -->
+      <footer class="grid md:grid-cols-4 bg-orange-400 justify-between font-semibold p-15 mt-9 sm:grid-rows pb-0">
+
+            <div class="flex flex-col">
+                
+                <h4 class="text-2xl">Resources</h4>
+                <a href="" class="hover:text-white">Application</a>
+                <a href=""class="hover:text-white">Documentation</a> 
+                <a href=""class="hover:text-white">systems</a> 
+                <a href=""class="hover:text-white">FAQ</a>
+            </div>
+
+            <div class="grid">
+                <h4 class="text-2xl">pricing</h4>
+                <a href=""class="hover:text-white">Overvew</a>
+                <a href=""class="hover:text-white">Premium Plans</a>
+                <a href=""class="hover:text-white"class="hover:text-white">Affiliate plans</a>
+                <a href=""class="hover:text-white">promotions</a>
+            </div>
+
+            <div class="grid">
+                <h4 class="text-2xl">company</h4>
+                <a href=""class="hover:text-white">About us</a>
+                <a href=""class="hover:text-white">Blog</a>
+                <a href=""class="hover:text-white">Partnerships</a>
+                <a href=""class="hover:text-white">cameras</a>
+                <a href=""class="hover:text-white">press</a>
+                <a href=""class="hover:text-white">sign in</a>
+                
+            </div>
+            <div class="mt-20 text-2xl ">
+                <a href="" class="hover:text-3xl hover:text-red-700"><i class="fa-brands fa-pinterest"></i></a>
+
+                <a href="" class="hover:text-3xl hover:text-blue-900"><i class="fa-brands fa-facebook"></i></a>
+
+                 <a href="" class="hover:text-3xl hover:text-pink-700"><i class="fa-brands fa-instagram"></i></a>
+
+                 <a href="" class="hover:text-3xl"><i class="fa-brands fa-square-twitter"></i></a>
+            </div>
+           <div class="mt-15 mb-2 italic text-semibold hover:text-white"> &copy 2026 vidmate.com</div>
+      </footer>
+        <script>
+    // ---------- Mobile menu ----------
+    const toggle = document.getElementById('menu-toggle');
+    const panel = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+ 
+    function setMobile(open) {
+      panel.hidden = !open;
+      toggle.setAttribute('aria-expanded', open);
+      toggle.querySelector('.sr-only').textContent = open ? 'Close menu' : 'Open menu';
+      iconOpen.classList.toggle('hidden', open);
+      iconClose.classList.toggle('hidden', !open);
+      document.body.classList.toggle('overflow-hidden', open);
+    }
+    toggle.addEventListener('click', () => setMobile(panel.hidden));
+ 
+    // ---------- Desktop dropdowns ----------
+    const dropdowns = document.querySelectorAll('[data-dropdown]');
+ 
+    function setDropdown(btn, open) {
+      const menu = document.getElementById(btn.getAttribute('aria-controls'));
+      menu.hidden = !open;
+      btn.setAttribute('aria-expanded', open);
+      btn.querySelector('svg').classList.toggle('rotate-180', open);
+    }
+    function closeAll(except) {
+      dropdowns.forEach(b => { if (b !== except) setDropdown(b, false); });
+    }
+    dropdowns.forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const willOpen = btn.getAttribute('aria-expanded') !== 'true';
+        closeAll(btn);
+        setDropdown(btn, willOpen);
+      });
+    });
+ 
+    // Close on outside click
+    document.addEventListener('click', () => closeAll());
+ 
+    // Close on Escape and return focus to the trigger
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      const openBtn = [...dropdowns].find(b => b.getAttribute('aria-expanded') === 'true');
+      closeAll();
+      if (openBtn) openBtn.focus();
+      if (!panel.hidden) { setMobile(false); toggle.focus(); }
+    });
+ 
+    // Reset mobile menu when resizing up to desktop
+    window.matchMedia('(min-width: 1024px)').addEventListener('change', e => {
+      if (e.matches) setMobile(false);
+    });
+  </script>
+</body>
+</html>
